@@ -1,6 +1,6 @@
 "use strict";
 
-function isEmpty(value) {
+export function isEmpty(value) {
     if (value === null || value === undefined){
         return true;
     }
@@ -12,12 +12,12 @@ function isEmpty(value) {
     return false;
 }
 
-function isValidEmail(email){
+export function isValidEmail(email){
     const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return regex.test(email);
 }
 
-function isValidNumber(value){
+export function isValidNumber(value){
     if (value === undefined || value === null){
         return false;
     }
