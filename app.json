@@ -1,25 +1,16 @@
 {
   "expo": {
-    "name": "CadastroAluno",
-    "slug": "CadastroAluno",
+    "name": "CadastroAlunoRN",
+    "slug": "cadastroalunorn",
     "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
-    "ios": {
-      "supportsTablet": true
-    },
     "android": {
-      "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
-        "foregroundImage": "./assets/android-icon-foreground.png",
-        "backgroundImage": "./assets/android-icon-background.png",
-        "monochromeImage": "./assets/android-icon-monochrome.png"
-      },
-      "predictiveBackGestureEnabled": false
+      "package": "br.edu.projeto.cadastroalunorn"
     },
-    "web": {
-      "favicon": "./assets/favicon.png"
+    "extra": {
+      "eas": {
+        "projectId": "209faf6b-e2c1-44b7-8a41-17c796ce6f67"
+      }
     }
   }
 }
+  
