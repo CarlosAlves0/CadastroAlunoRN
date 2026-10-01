@@ -9,6 +9,7 @@ import {
   TextInput,
   TouchableOpacity,
   ScrollView,
+  Modal,
 } from 'react-native';
 
 
@@ -50,6 +51,8 @@ export default function App() {
 
   const [mostrarCursos, setMostrarCursos] = useState(false);
 
+  // useState para controlar visibilidade do modal
+  const [mostrarModal, setMostrarModal] = useState(false);
 
   // ==========================================
   // VALIDAR NOME
@@ -187,7 +190,7 @@ export default function App() {
       // o cadastro real.
 
       console.log("Cadastro válido!");
-
+      setMostrarModal(true);
     }
 
   }
@@ -225,6 +228,12 @@ export default function App() {
 
   }
 
+  //Função para esconder o modal e limpar campos
+  function fecharModal(){
+    // limparCampos();
+
+    setMostrarModal(false);
+  }
 
   // ==========================================
   // FRONT-END
@@ -236,6 +245,32 @@ export default function App() {
 
       <StatusBar style="dark" />
 
+      <Modal visible={mostrarModal} animationType='slide' style={{backgroundColor: "rgb(0, 0, 0, 0)"}}>
+        <View style={{margin: "auto", backgroundColor: "#FFFFFF", padding: 24, borderRadius: 32}}>
+          <View style={{display: "flex", gap: 21}}>
+            <Text style={styles.modalTitulo}>Aluno Cadastrado com Sucesso</Text>           
+            <Text style={styles.modalTexto}>👤 {nome}</Text>                   
+            <Text style={styles.modalTexto}><Text>✉</Text> {email.length !== 0 ? email : "Não preenchido"}</Text>
+            <Text style={styles.modalTexto}>▣ {ra}</Text>
+            <Text style={styles.modalTexto}>🎓 {curso.length !== 0 ? curso : "Não preenchido"}</Text>
+            <TouchableOpacity
+              style={styles.modalBotaoFechar}
+
+              onPress={fecharModal}
+
+            >
+
+              <Text style={styles.textoLimpar}>
+
+                Fechar
+
+              </Text>
+
+            </TouchableOpacity>
+          </View>
+          
+        </View>
+      </Modal>
 
       <ScrollView
         showsVerticalScrollIndicator={false}
@@ -663,6 +698,26 @@ export default function App() {
           {mostrarCursos && (
 
             <View style={styles.menuCursos}>
+              {/* NENHUM CURSO */}
+
+              <TouchableOpacity
+                style={styles.opcaoCurso}
+
+                onPress={() =>
+                  selecionarCurso('')
+                }
+
+              >
+            
+                <View>
+
+                  <Text style={styles.nomeCurso}>
+                    Nenhum Curso
+                  </Text>
+
+                </View>
+
+              </TouchableOpacity>
 
 
               {/* INGLÊS */}
@@ -1316,4 +1371,43 @@ const styles = StyleSheet.create({
 
   },
 
+
+  // ========================================
+  // MODAL
+  // ========================================
+
+  modalTitulo: {
+
+    fontSize: 30,
+
+    fontWeight: '700',
+
+    color: '#2563EB',
+
+    // marginBottom: 7,
+
+    textAlign: "center"
+  },
+  modalBotaoFechar: {
+
+    height: 47,
+
+    borderWidth: 1,
+
+    borderColor: '#DBE1E9',
+
+    borderRadius: 11,
+
+    justifyContent: 'center',
+
+    alignItems: 'center',
+
+    // marginTop: 10,
+
+    backgroundColor: '#FFFFFF',
+
+  },
+  modalTexto: { 
+    fontSize: 15
+  },
 });
